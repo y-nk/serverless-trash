@@ -13,9 +13,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Raven certificate
+        run: |
+          mkdir certs
+          echo '${{ secrets.RAVENDB_CERT }}' | base64 -d > ./certs/ravendb.pfx
+
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
-        with:
+
+      with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}

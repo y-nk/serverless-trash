@@ -1,8 +1,25 @@
-import { DocumentStore } from 'ravendb'
+import { CreateDatabaseOperation, DocumentStore } from 'ravendb'
+import { readFileSync } from 'fs'
 
-export const getStoreSession = (storeName: string) => {
-  const store = new DocumentStore(process.env.RAVENDB_URL!, storeName)
+export const getStoreSession = async (databaseName: string) => {
+  const store = new DocumentStore(process.env.RAVENDB_URL!, databaseName, {
+    type: 'pfx',
+    certificate: readFileSync('./certs/ravendb.pfx'),
+  })
+
   store.initialize()
 
-  return store.openSession()
+  const session = store.openSession()
+
+  try {
+    await session.load('0')
+  } catch (err: unknown) {
+    if ((err as any).name === 'DatabaseDoesNotExistException') {
+      await store.maintenance.server.send(
+        new CreateDatabaseOperation({ databaseName }),
+      )
+    }
+  }
+
+  return session
 }

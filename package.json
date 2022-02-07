@@ -1,8 +1,9 @@
 {
   "name": "@y_nk/serverless-trash",
   "description": "Serverless backend for all the projects i'll never finish",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "scripts": {
+    "start": "vercel dev",
     "test": "npx eslint . --ext ts",
     "release": "npx standard-version && git push --follow-tags"
   },
@@ -15,6 +16,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "lodash": "^4.17.21",
+    "nanoid": "^3.2.0",
     "ravendb": "^5.2.0",
     "snake-case": "^3.0.4"
   },
