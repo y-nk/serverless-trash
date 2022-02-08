@@ -5,15 +5,6 @@ import { getStoreSession } from '../../lib'
 
 import type { Bin } from '.'
 
-const PROPS: (keyof VercelRequest)[] = [
-  'httpVersion',
-  'method',
-  'headers',
-  'query',
-  'cookies',
-  'body',
-]
-
 export default allowCors(async (req: VercelRequest, res: VercelResponse) => {
   const binId = req.query.binId.toString()
   const session = await getStoreSession('reqbin')
