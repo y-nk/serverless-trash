@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.0.0 (2022-02-08)
+
+
+### Features
+
+* my own postbin ([51e2ed9](https://github.com/y-nk/serverless-trash/commit/51e2ed90cac3c26017ba9000ac5144fe786f94a8))
+
 ### [1.1.1](https://github.com/y-nk/serverless-trash/compare/v1.1.0...v1.1.1) (2022-02-07)
 
 
