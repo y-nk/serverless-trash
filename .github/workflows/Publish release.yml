@@ -18,10 +18,14 @@ jobs:
           mkdir certs
           echo '${{ secrets.RAVENDB_CERT }}' | base64 -d > ./certs/ravendb.pfx
 
-      - name: Deploy to Vercel Action
-
-      with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy to Vercel
+        env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+        run: |
+          npm i vercel -g
+          mkdir .vercel
+          echo {} | jq --arg "$VERCEL_ORG_ID" $org --arg projectId "$VERCEL_PROJECT_ID" '.={$orgId, $projectId}' > .vercel/project.json
+          vercel --prod --token $VERCEL_TOKEN
