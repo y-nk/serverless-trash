@@ -7,11 +7,11 @@ export type Bin = {
   binId: string
   expiresAt: number
   data: {
-    httpVersion: string
+    version: string
     method: string
-    headers: Record<string, string>
+    headers: Record<string, string | string[] | undefined>
     cookies: Record<string, string>
-    query: Record<string, string>
+    query: Record<string, string | string[]>
     body: any
   }
 }

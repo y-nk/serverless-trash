@@ -45,17 +45,14 @@ export default allowCors(async (req: VercelRequest, res: VercelResponse) => {
     // that was in the path...
     delete req.query.binId
 
-    const data = PROPS.reduce(
-      (acc, prop) => ({
-        ...acc,
-        [prop]: typeof req[prop] === 'object' ? { ...req[prop] } : req[prop],
-      }),
-      {} as Bin['data'],
-    )
-
-    console.log({ data })
-
-    storedBin.data = data
+    storedBin.data = {
+      version: req.httpVersion,
+      method: req.method!,
+      headers: { ...req.headers },
+      cookies: { ...req.cookies },
+      query: { ...req.query },
+      body: req.body ?? '',
+    }
 
     await session.saveChanges()
     res.status(200).end('Recorded')
