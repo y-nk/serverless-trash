@@ -18,11 +18,3 @@ export const withSecret =
 
     return handler(req, res)
   }
-
-export const allowCors =
-  (handler: VercelApiHandler) => (req: VercelRequest, res: VercelResponse) => {
-    res.setHeader('Access-Control-Allow-Credentials', 'true')
-    res.setHeader('Access-Control-Allow-Origin', '*')
-
-    return handler(req, res)
-  }
