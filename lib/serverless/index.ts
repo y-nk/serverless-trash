@@ -1,3 +1,3 @@
 export * from './allowCors'
-export * from './withProxy'
+export * from './lambda'
 export * from './withSecret'

@@ -1,3 +1,2 @@
 export * from './github'
-export * from './ravendb'
-export * from './serverless/serverless'
+export * from './serverless'

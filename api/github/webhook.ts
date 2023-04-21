@@ -15,7 +15,7 @@ import { config } from 'dotenv'
 import express, { Request } from 'express'
 import { snakeCase } from 'snake-case'
 
-import { withSecret } from '../../lib'
+import { λ, withSecret } from '~/lib'
 
 type AnyObj = Record<string, unknown>
 
@@ -148,9 +148,9 @@ app.post(
   },
 )
 
-app.all('*', (req, res) => res.status(404).end(':('))
+app.all('*', (_, res) => res.status(404).end(':('))
 
-export default withSecret((req: VercelRequest, res: VercelResponse) =>
+export default λ(withSecret, (req: VercelRequest, res: VercelResponse) =>
   // @ts-ignore
   app.handle(req, res),
 )

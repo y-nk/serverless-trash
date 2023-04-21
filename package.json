@@ -4,7 +4,7 @@
   "version": "1.2.0",
   "scripts": {
     "start": "vercel dev",
-    "test": "npx eslint . --ext ts",
+    "lint": "npx eslint . --ext ts",
     "release": "npx standard-version && git push --follow-tags"
   },
   "keywords": [],
@@ -17,7 +17,6 @@
     "express": "^4.17.1",
     "lodash": "^4.17.21",
     "nanoid": "^3.2.0",
-    "ravendb": "^5.2.0",
     "snake-case": "^3.0.4"
   },
   "devDependencies": {

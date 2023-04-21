@@ -2,9 +2,6 @@
   "functions": {
     "api/index.ts": {
       "includeFiles": "package.json"
-    },
-    "api/**/*.ts": {
-      "includeFiles": "certs/ravendb.pfx"
     }
   }
 }

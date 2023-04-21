@@ -13,11 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Raven certificate
-        run: |
-          mkdir certs
-          echo '${{ secrets.RAVENDB_CERT }}' | base64 -d > ./certs/ravendb.pfx
-
       - name: Deploy to Vercel
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
