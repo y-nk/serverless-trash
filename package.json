@@ -5,7 +5,8 @@
   "scripts": {
     "start": "vercel dev",
     "lint": "npx eslint . --ext ts",
-    "release": "npx standard-version && git push --follow-tags"
+    "version": "npx standard-version",
+    "postversion": "git push --follow-tags"
   },
   "keywords": [],
   "author": "Julien Barbay <julien.barbay@gmail.com>",
